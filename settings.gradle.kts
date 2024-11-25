@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "iMarket"
 include(":app")
+include(":data")
+include(":domain")

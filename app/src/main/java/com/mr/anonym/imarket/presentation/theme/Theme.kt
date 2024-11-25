@@ -1,4 +1,4 @@
-package com.mr.anonym.imarket.ui.theme
+package com.mr.anonym.imarket.presentation.theme
 
 import android.app.Activity
 import android.os.Build

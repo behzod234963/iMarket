@@ -1,11 +1,13 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
+    alias(libs.plugins.daggerHiltApp)
 }
 
 android {
     namespace = "com.mr.anonym.imarket"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.mr.anonym.imarket"
@@ -66,4 +68,46 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+//    Modules
+    implementation(project(":data"))
+    implementation(project(":domain"))
+
+//    Retrofit
+    implementation(libs.gsonConverter)
+    implementation(libs.retrofit2)
+
+//    OkHttp
+    implementation(libs.okHttp)
+
+//    Dagger Hilt
+    implementation(libs.daggerHilt)
+    kapt(libs.daggerHiltKaptCompiler)
+
+//    Coil
+    implementation(libs.coil)
+    implementation(libs.coilOkHttp)
+
+//    ViewModel and lifecycle dependency's
+    implementation(libs.viewModel)
+    implementation(libs.viewModelUtilities)
+    implementation(libs.liveData)
+    implementation(libs.lifecycleUtilities)
+    implementation(libs.viewModelSaveState)
+
+//    Coroutine
+    implementation(libs.coroutine)
+
+//    Room SQLite
+    implementation(libs.roomSQLite)
+    implementation(libs.roomWithCoroutines)
+    implementation(libs.roomPaging3)
+    kapt(libs.kaptCompiler)
+
+//    Paging3
+    implementation(libs.paging3)
+    implementation(libs.paging3JetpackCompose)
+}
+kapt {
+    correctErrorTypes = true
 }
