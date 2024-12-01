@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">iMarket</string>
+    <string name="change_city">Сменит город</string>
+    <string name="confirm_city">Всё верно</string>
+    <string name="unknown">Неизвестно</string>
+    <string name="unknown_location">Неизвестная местоположение,пожалуйста выберите заново</string>
+    <string name="your_city">Ваш город?</string>
+    <string name="location">Местоположение</string>
+</resources>

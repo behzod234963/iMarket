@@ -1,4 +1,4 @@
-package com.mr.anonym.imarket.presentation.theme
+package com.mr.anonym.imarket.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

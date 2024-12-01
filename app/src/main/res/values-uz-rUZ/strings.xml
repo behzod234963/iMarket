@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">iMarket</string>
+    <string name="change_city">Shaharni o\'zgratirish</string>
+    <string name="confirm_city">Tasdiqlash</string>
+    <string name="unknown">Noma\'lum</string>
+    <string name="unknown_location">Noma\'lum manzil, iltimos, qayta tanlang</string>
+    <string name="your_city">Sizning shahringiz?</string>
+    <string name="location">Manzil</string>
+</resources>

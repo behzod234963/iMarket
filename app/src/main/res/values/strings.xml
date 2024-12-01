@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">iMarket</string>
+    <string name="change_city">Change city</string>
+    <string name="confirm_city">Confirm</string>
+    <string name="unknown">Unknown</string>
+    <string name="unknown_location">Unknown location,please select again</string>
+    <string name="your_city">Your city?</string>
+    <string name="location">Location</string>
 </resources>
