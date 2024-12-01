@@ -13,4 +13,4 @@
 .externalNativeBuild
 .cxx
 local.properties
-app.src.main.java.com.mr.anonym.imarket.presentation.utils.Constants.kt
+java/com/mr/anonym/imarket/presentation/utils/Constants.kt
