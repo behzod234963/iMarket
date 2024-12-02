@@ -71,7 +71,6 @@ fun OnBoardingScreen(
             Box(
                 modifier = Modifier.fillMaxSize()
             ) {
-//                fusedLocation.getLocation()
                 navController.navigate(Screens.ChangeCityScreen.route)
             }
         }
@@ -126,7 +125,7 @@ fun OnBoardingScreen(
                     ),
                     elevation = ButtonDefaults.buttonElevation(5.dp),
                     onClick = {
-                        TODO()
+                        navController.navigate(Screens.MainScreen.route)
                     }
                 ) {
                     Column(

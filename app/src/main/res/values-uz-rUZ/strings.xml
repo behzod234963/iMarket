@@ -7,4 +7,5 @@
     <string name="unknown_location">Noma\'lum manzil, iltimos, qayta tanlang</string>
     <string name="your_city">Sizning shahringiz?</string>
     <string name="location">Manzil</string>
+    <string name="search_in_imarket">iMarketda izlash</string>
 </resources>

@@ -63,4 +63,16 @@ class DataStoreInstance(private val context: Context) {
             result[booleanKey]?:false
         }
     }
+    suspend fun saveIsFirstLaunch(status:Boolean){
+        val booleanKey = booleanPreferencesKey("IsFirstLaunch")
+        context.dataStore.edit {result->
+            result[booleanKey] = status
+        }
+    }
+    fun getIsFirstLaunch(): Flow<Boolean> {
+        val booleanKey = booleanPreferencesKey("IsFirstLaunch")
+        return context.dataStore.data.map { result->
+            result[booleanKey]?:false
+        }
+    }
 }

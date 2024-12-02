@@ -41,6 +41,7 @@ import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
 import com.mr.anonym.data.local.dataStore.DataStoreInstance
 import com.mr.anonym.imarket.R
+import com.mr.anonym.imarket.presentation.navigation.Screens
 import com.mr.anonym.imarket.presentation.utils.ConverterCoordinates
 import com.mr.anonym.imarket.presentation.utils.GetFusedLocation
 import kotlinx.coroutines.CoroutineScope
@@ -155,7 +156,7 @@ fun ChangeCityScreen(
                             if (!geoCoder.contains(context.getString(R.string.unknown))){
                                 dataStoreInstance.saveCity(geoCoder)
                                 bottomSheetState.hide()
-                                TODO()
+                                navController.navigate(Screens.MainScreen.route)
                             }else{
                                 scaffoldBottomSheetState.snackbarHostState.showSnackbar(
                                     context.getString(R.string.unknown_location)

@@ -7,6 +7,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.mr.anonym.imarket.ui.screens.OnBoardingScreen
 import com.mr.anonym.imarket.ui.screens.ChangeCityScreen
+import com.mr.anonym.imarket.ui.screens.MainScreen
+import com.mr.anonym.imarket.ui.screens.SearchFieldScreen
 
 @Composable
 fun NavGraph() {
@@ -22,6 +24,12 @@ fun NavGraph() {
         }
         composable(Screens.ChangeCityScreen.route) {
             ChangeCityScreen(navController)
+        }
+        composable(Screens.MainScreen.route) {
+            MainScreen(navController)
+        }
+        composable(Screens.SearchFieldScreen.route) {
+            SearchFieldScreen(navController)
         }
     }
 }
