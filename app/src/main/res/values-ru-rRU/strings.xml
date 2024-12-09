@@ -8,4 +8,6 @@
     <string name="your_city">Ваш город?</string>
     <string name="location">Местоположение</string>
     <string name="search_in_imarket">Искать в iMarket</string>
+    <string name="history">История</string>
+    <string name="clear">Очистить</string>
 </resources>

@@ -78,6 +78,7 @@ dependencies {
 //    Retrofit
     implementation(libs.gsonConverter)
     implementation(libs.retrofit2)
+//    implementation(libs.coroutinesCallAdapterFactory)
 
 //    OkHttp
     implementation(libs.okHttp)

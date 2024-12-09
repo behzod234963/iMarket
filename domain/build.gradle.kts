@@ -47,4 +47,8 @@ dependencies {
     implementation(libs.roomWithCoroutines)
     implementation(libs.roomPaging3)
     kapt(libs.kaptCompiler)
+
+    //    Retrofit
+    implementation(libs.gsonConverter)
+    implementation(libs.retrofit2)
 }

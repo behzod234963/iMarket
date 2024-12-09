@@ -8,4 +8,6 @@
     <string name="your_city">Sizning shahringiz?</string>
     <string name="location">Manzil</string>
     <string name="search_in_imarket">iMarketda izlash</string>
+    <string name="history">Tarix</string>
+    <string name="clear">Tozalash</string>
 </resources>

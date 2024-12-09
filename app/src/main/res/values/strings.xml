@@ -7,4 +7,6 @@
     <string name="your_city">Your city?</string>
     <string name="location">Location</string>
     <string name="search_in_imarket">Search in iMarket</string>
+    <string name="history">History</string>
+    <string name="clear">Clear</string>
 </resources>

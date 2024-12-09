@@ -1,10 +1,12 @@
 package com.mr.anonym.imarket.di.module
 
+import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.mr.anonym.data.local.dataStore.DataStoreInstance
 import com.mr.anonym.data.local.room.ProductsDAO
 import com.mr.anonym.data.local.room.RoomInstance
+import com.mr.anonym.data.local.room.SearchHistoryDAO
 import com.mr.anonym.data.local.room.UserDao
 import com.mr.anonym.data.remote.ProductsApi
 import com.mr.anonym.imarket.presentation.utils.BASE_URL
@@ -50,16 +52,22 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideRoomInstance(@ApplicationContext context: Context): RoomInstance =
+    fun provideRoomInstance(application:Application): RoomInstance =
         Room.databaseBuilder(
-            context,
+            application,
             RoomInstance::class.java,
             DATABASE_NAME
         ).build()
 
     @Provides
+    @Singleton
     fun provideProductsDAO(room: RoomInstance): ProductsDAO = room.productsDAO
+    @Provides
+    @Singleton
     fun provideUserDAO(room: RoomInstance): UserDao = room.userDAO
+    @Provides
+    @Singleton
+    fun provideSearchHistoryDAO(room: RoomInstance):SearchHistoryDAO = room.searchHistoryDAO
 
     @Provides
     @Singleton

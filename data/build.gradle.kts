@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -45,6 +46,16 @@ dependencies {
 //    Module
     implementation(project(":domain"))
 
+    //    Room SQLite
+    implementation(libs.roomSQLite)
+    implementation(libs.roomWithCoroutines)
+    implementation(libs.roomPaging3)
+    kapt(libs.kaptCompiler)
+
 //    Data Store
     implementation(libs.androidx.dataStore)
+
+    //    Retrofit
+    implementation(libs.gsonConverter)
+    implementation(libs.retrofit2)
 }
