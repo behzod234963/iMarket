@@ -46,25 +46,24 @@ fun SearchFieldTopAppBar(
 
     val keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search)
     val keyBoardController = LocalSoftwareKeyboardController.current
-    TopAppBar(
+    DefaultTopAppBar(
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = Color.Red
         ),
         title = {
-            OutlinedTextField(
+            DefaultOutlinedTextFiled(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable {
+                        navController.navigate(Screens.SearchFieldScreen.route)
+                    },
                 value = text,
-                maxLines = 1,
-                onValueChange = {
-                    onValueChange(it)
-                },
-                keyboardOptions = keyboardOptions,
-                keyboardActions = KeyboardActions(
-                    onSearch = {
-                        onSend()
-                        keyBoardController?.hide()
-                    }
-                ),
+                onValueChange = { onValueChange(it) },
                 singleLine = true,
+                textStyle = TextStyle(
+                    color = Color.Black,
+                    fontSize = 17.sp
+                ),
                 colors = OutlinedTextFieldDefaults.colors(
                     disabledContainerColor = Color.White,
                     unfocusedContainerColor = Color.White,
@@ -75,17 +74,12 @@ fun SearchFieldTopAppBar(
                     unfocusedTextColor = Color.Black,
                     focusedTextColor = Color.Black
                 ),
-
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable {
-                        navController.navigate(Screens.SearchFieldScreen.route)
-                    },
+                keyboardOptions = keyboardOptions,
+                keyboardActions = {
+                    onSend()
+                    keyBoardController?.hide()
+                },
                 shape = RoundedCornerShape(10.dp),
-                textStyle = TextStyle(
-                    color = Color.Black,
-                    fontSize = 17.sp
-                ),
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Default.Search,
@@ -109,7 +103,7 @@ fun SearchFieldTopAppBar(
 //                        Button clear search field
                         IconButton(
                             onClick = {
-                               onClear()
+                                onClear()
                             }
                         ) {
                             Icon(
@@ -133,7 +127,7 @@ fun SearchFieldTopAppBar(
                     }
                 }
             )
-        },
+        } ,
         navigationIcon = {
             IconButton(
                 onClick = {
@@ -146,6 +140,7 @@ fun SearchFieldTopAppBar(
                     tint = Color.White
                 )
             }
-        }
+        },
+        actions = {}
     )
 }

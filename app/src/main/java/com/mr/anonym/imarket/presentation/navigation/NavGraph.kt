@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.mr.anonym.imarket.ui.components.FilterView
 import com.mr.anonym.imarket.ui.screens.CategoryScreen
 import com.mr.anonym.imarket.ui.screens.ChangeCityScreen
 import com.mr.anonym.imarket.ui.screens.MainScreen
@@ -36,7 +37,7 @@ fun NavGraph() {
             SearchFieldScreen(navController)
         }
         composable(
-            route = Screens.CategoryScreen.route + "/{category}",
+            Screens.CategoryScreen.route + "/{category}",
             arguments = listOf(
                 navArgument(name = "category") {
                     type = NavType.StringType
@@ -46,11 +47,12 @@ fun NavGraph() {
         ) {entry->
             val category = entry.arguments?.getString("category")?:""
             CategoryScreen(
+                navController = navController,
                 arguments = NavigationArguments(category)
             )
         }
         composable(
-            route = Screens.ProductScreen.route + "/{id}",
+            Screens.ProductScreen.route + "/{id}",
             arguments = listOf(
                 navArgument("id"){
                     type = NavType.IntType
@@ -60,6 +62,12 @@ fun NavGraph() {
         ) {entry->
             val id = entry.arguments?.getInt("id")?:-1
             ProductScreen(arguments = NavigationArguments(id = id))
+        }
+        composable(Screens.FilterView.route) {
+            FilterView (
+                ,
+                onBackClick = {}
+            )
         }
     }
 }

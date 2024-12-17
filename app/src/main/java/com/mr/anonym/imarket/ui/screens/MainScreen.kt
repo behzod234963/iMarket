@@ -2,20 +2,16 @@ package com.mr.anonym.imarket.ui.screens
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowColumn
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Notifications
@@ -35,7 +31,6 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -48,13 +43,15 @@ import androidx.navigation.NavHostController
 import com.mr.anonym.imarket.R
 import com.mr.anonym.imarket.presentation.navigation.Screens
 import com.mr.anonym.imarket.presentation.viewModel.MainViewModel
+import com.mr.anonym.imarket.ui.components.DefaultMediumTopAppBar
+import com.mr.anonym.imarket.ui.components.DefaultOutlinedTextFiled
 import com.mr.anonym.imarket.ui.theme.fontAmidoneGrotesk
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MainScreen(
-    navController:NavHostController,
+    navController: NavHostController,
     viewModel: MainViewModel = hiltViewModel()
 ) {
 
@@ -64,11 +61,9 @@ fun MainScreen(
 
     val city = viewModel.city.value
 
-    Scaffold (
+    Scaffold(
         topBar = {
-            MediumTopAppBar(
-//                expandedHeight = 70.dp,
-//                collapsedHeight = 70.dp,
+            DefaultMediumTopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color.Red
                 ),
@@ -83,7 +78,7 @@ fun MainScreen(
                     )
                 },
                 actions = {
-                    FlowRow {
+                    Row {
                         Icon(
                             imageVector = Icons.Outlined.LocationOn,
                             contentDescription = "icon location",
@@ -107,7 +102,14 @@ fun MainScreen(
                         verticalArrangement = Arrangement.Center,
                         maxItemsInEachRow = 2
                     ) {
-                        OutlinedTextField(
+                        DefaultOutlinedTextFiled(
+                            modifier =  Modifier
+                                .fillMaxWidth(0.85f)
+                                .wrapContentHeight()
+                                .padding(bottom = 5.dp)
+                                .clickable {
+                                    navController.navigate(Screens.SearchFieldScreen.route)
+                                },
                             enabled = false,
                             value = "",
                             onValueChange = {},
@@ -115,13 +117,6 @@ fun MainScreen(
                                 disabledContainerColor = Color.White
                             ),
                             shape = RoundedCornerShape(10.dp),
-                            modifier = Modifier
-                                .fillMaxWidth(0.85f)
-                                .wrapContentHeight()
-                                .padding(bottom = 5.dp)
-                                .clickable {
-                                    navController.navigate(Screens.SearchFieldScreen.route)
-                                },
                             leadingIcon = {
                                 Icon(
                                     imageVector = Icons.Default.Search,
@@ -143,9 +138,11 @@ fun MainScreen(
                                         tint = Color.LightGray
                                     )
                                 }
-                            }
+                            },
+                            keyboardActions = {},
+                            placeholder = {},
                         )
-                        Card (
+                        Card(
                             modifier = Modifier
                                 .height(50.dp)
                                 .padding(end = 5.dp, bottom = 5.dp),
@@ -153,7 +150,7 @@ fun MainScreen(
                                 containerColor = Color.White
                             ),
                             shape = RoundedCornerShape(10.dp)
-                        ){
+                        ) {
                             IconButton(
                                 onClick = {
                                     TODO()
@@ -167,8 +164,10 @@ fun MainScreen(
                             }
                         }
                     }
-                },
+                }
             )
         }
-    ){}
+    ) {
+        TODO()
+    }
 }

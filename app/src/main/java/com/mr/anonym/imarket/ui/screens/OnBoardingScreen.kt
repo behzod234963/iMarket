@@ -38,9 +38,9 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.mr.anonym.imarket.R
 import com.mr.anonym.imarket.presentation.navigation.Screens
-import com.mr.anonym.imarket.presentation.utils.ConverterCoordinates
-import com.mr.anonym.imarket.presentation.utils.GetFusedLocation
-import com.mr.anonym.imarket.presentation.utils.PermissionHandler
+import com.mr.anonym.imarket.presentation.utils.component.ConverterCoordinates
+import com.mr.anonym.imarket.presentation.utils.component.GetFusedLocation
+import com.mr.anonym.imarket.presentation.utils.component.PermissionHandler
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable

@@ -12,8 +12,8 @@ import com.mr.anonym.domain.model.ProductsModel
 import com.mr.anonym.domain.model.SearchHistoryModel
 import com.mr.anonym.domain.useCase.local.LocalDataUseCases
 import com.mr.anonym.domain.useCase.remote.ProductsUseCases
-import com.mr.anonym.imarket.presentation.utils.LocalDataEvent
-import com.mr.anonym.imarket.presentation.utils.ProductsState
+import com.mr.anonym.imarket.presentation.utils.event.LocalDataEvent
+import com.mr.anonym.imarket.presentation.utils.state.ProductsState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -35,7 +35,7 @@ class SearchFieldViewModel @Inject constructor(
     private val _searchingResource = mutableStateOf(ProductsState().products)
     val searchingResource :State<List<ProductsItem>> = _searchingResource
 
-    private val _searchHistory = mutableStateOf( ProductsState().searchHistory )
+    private val _searchHistory = mutableStateOf( ProductsState().searchHistory)
     val searchHistory:State<List<SearchHistoryModel>> = _searchHistory
 
     private val _categories = mutableStateOf(ProductsState().categories)
@@ -77,6 +77,7 @@ class SearchFieldViewModel @Inject constructor(
     fun getSearchedProducts(text: String) = viewModelScope.launch {
 
         _isSearching.value = true
+        delay(1500L)
         productsUseCases.searchProductsUseCase.execute(text).enqueue(object :Callback<ProductsModel>{
             override fun onResponse(p0: Call<ProductsModel>, response: Response<ProductsModel>) {
                 if (response.isSuccessful){

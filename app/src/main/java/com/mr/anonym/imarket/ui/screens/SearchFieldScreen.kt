@@ -6,7 +6,6 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,7 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -32,7 +30,7 @@ import androidx.navigation.NavHostController
 import com.mr.anonym.domain.model.SearchHistoryModel
 import com.mr.anonym.imarket.R
 import com.mr.anonym.imarket.presentation.navigation.Screens
-import com.mr.anonym.imarket.presentation.utils.LocalDataEvent
+import com.mr.anonym.imarket.presentation.utils.event.LocalDataEvent
 import com.mr.anonym.imarket.presentation.viewModel.SearchFieldViewModel
 import com.mr.anonym.imarket.ui.components.SearchFieldTopAppBar
 import com.mr.anonym.imarket.ui.items.SearchFieldItem

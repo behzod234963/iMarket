@@ -7,4 +7,5 @@ sealed class Screens(val route:String){
     data object SearchFieldScreen:Screens("SearchFieldScreen")
     data object CategoryScreen:Screens("CategoryScreen")
     data object ProductScreen:Screens("ProductScreen")
+    data object FilterView:Screens("FilterView")
 }

@@ -10,4 +10,24 @@
     <string name="search_in_imarket">Искать в iMarket</string>
     <string name="history">История</string>
     <string name="clear">Очистить</string>
+    <string name="filter">Фильтры</string>
+    <string name="available">Наличие</string>
+    <string name="rating_4_or_more">Рейтинг 4 и выше</string>
+    <string name="is_have_reviews">Есть обзор</string>
+    <string name="price">Цена</string>
+    <string name="brand">Производитель</string>
+    <string name="exist">Есть</string>
+    <string name="in_stock">В наличии</string>
+    <string name="out_of_stock">Нет в наличии</string>
+    <string name="apply">Применить</string>
+    <string name="reset">Сбросить</string>
+    <string name="rating">Рейтинг</string>
+    <string name="the_price_field_must_not_have_any_letters">В поле цена не должно быть никаких букв</string>
+    <string name="from">от</string>
+    <string name="to">до</string>
+    <string name="less_than_100">Менее чем 100$</string>
+    <string name="_301_500">301–500$</string>
+    <string name="_101_300">101–300$</string>
+    <string name="_501_1000">501–1000$</string>
+    <string name="_1001">Более чем 1001$</string>
 </resources>

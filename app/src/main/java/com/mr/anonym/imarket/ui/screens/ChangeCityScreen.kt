@@ -42,8 +42,8 @@ import com.google.maps.android.compose.rememberCameraPositionState
 import com.mr.anonym.data.local.dataStore.DataStoreInstance
 import com.mr.anonym.imarket.R
 import com.mr.anonym.imarket.presentation.navigation.Screens
-import com.mr.anonym.imarket.presentation.utils.ConverterCoordinates
-import com.mr.anonym.imarket.presentation.utils.GetFusedLocation
+import com.mr.anonym.imarket.presentation.utils.component.ConverterCoordinates
+import com.mr.anonym.imarket.presentation.utils.component.GetFusedLocation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

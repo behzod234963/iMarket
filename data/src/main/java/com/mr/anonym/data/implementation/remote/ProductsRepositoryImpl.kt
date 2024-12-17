@@ -15,5 +15,5 @@ class ProductsRepositoryImpl(private val productsApi: ProductsApi) :ProductsRepo
 
     override fun getAllCategory(): Call<List<CategoryModel>>  = productsApi.getAllCategory()
 
-    override fun getProductsByCategory(category: String): Call<ProductsModel> = getProductsByCategory(category)
+    override fun getProductsByCategory(category: String): Call<ProductsModel> = productsApi.getProductsByCategory(category)
 }

@@ -1,4 +1,4 @@
-package com.mr.anonym.imarket.presentation.utils
+package com.mr.anonym.imarket.presentation.utils.component
 
 import android.content.Context
 import android.location.Geocoder

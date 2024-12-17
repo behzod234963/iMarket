@@ -9,8 +9,8 @@ import com.mr.anonym.data.local.room.RoomInstance
 import com.mr.anonym.data.local.room.SearchHistoryDAO
 import com.mr.anonym.data.local.room.UserDao
 import com.mr.anonym.data.remote.ProductsApi
-import com.mr.anonym.imarket.presentation.utils.BASE_URL
-import com.mr.anonym.imarket.presentation.utils.DATABASE_NAME
+import com.mr.anonym.imarket.presentation.utils.component.BASE_URL
+import com.mr.anonym.imarket.presentation.utils.component.DATABASE_NAME
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

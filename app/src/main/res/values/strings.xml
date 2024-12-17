@@ -9,4 +9,24 @@
     <string name="search_in_imarket">Search in iMarket</string>
     <string name="history">History</string>
     <string name="clear">Clear</string>
+    <string name="filter">Filters</string>
+    <string name="available">Available</string>
+    <string name="rating_4_or_more">Rating 4 or more</string>
+    <string name="is_have_reviews">Reviews</string>
+    <string name="price">Price</string>
+    <string name="brand">Brand</string>
+    <string name="exist">Exist</string>
+    <string name="in_stock">In stock</string>
+    <string name="out_of_stock">Out of stock</string>
+    <string name="apply">Apply</string>
+    <string name="reset">Reset</string>
+    <string name="rating">Rating</string>
+    <string name="the_price_field_must_not_have_any_letters">The price field must not have any letters</string>
+    <string name="from">from</string>
+    <string name="to">до</string>
+    <string name="less_than_100">Less than 100$</string>
+    <string name="_301_500">301–500$</string>
+    <string name="_101_300">101–300$</string>
+    <string name="_501_1000">501–1000$</string>
+    <string name="_1001">More than 1001$</string>
 </resources>

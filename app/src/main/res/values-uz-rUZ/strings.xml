@@ -10,4 +10,24 @@
     <string name="search_in_imarket">iMarketda izlash</string>
     <string name="history">Tarix</string>
     <string name="clear">Tozalash</string>
+    <string name="filter">Filter</string>
+    <string name="available">Mavjud</string>
+    <string name="rating_4_or_more">Baho 4 yoki yuqori</string>
+    <string name="is_have_reviews">Sharh</string>
+    <string name="price">Narx</string>
+    <string name="brand">Ishlab chiqaruvchi</string>
+    <string name="exist">Bor</string>
+    <string name="in_stock">Mavjud</string>
+    <string name="out_of_stock">Mavjud emas</string>
+    <string name="apply">Qo\'llash</string>
+    <string name="reset">Reyting</string>
+    <string name="the_price_field_must_not_have_any_letters">Narxlar maydonida harflar bo\'lmasligi kerak</string>
+    <string name="from">Dan</string>
+    <string name="to">gacha</string>
+    <string name="rating">Baho</string>
+    <string name="less_than_100">100$ dan kam</string>
+    <string name="_301_500">301–500$</string>
+    <string name="_101_300">101–300$</string>
+    <string name="_501_1000">501–1000$</string>
+    <string name="_1001">1001$ dan ko\'p</string>
 </resources>
