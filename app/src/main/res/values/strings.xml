@@ -29,4 +29,9 @@
     <string name="_101_300">101–300$</string>
     <string name="_501_1000">501–1000$</string>
     <string name="_1001">More than 1001$</string>
+    <string name="before_inexpensive">Inexpensive</string>
+    <string name="before_expensive">Expensive</string>
+    <string name="best_rating">Best rating</string>
+    <string name="by_discount">By discount</string>
+    <string name="by_reviews">By reviews</string>
 </resources>

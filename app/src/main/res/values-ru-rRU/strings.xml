@@ -30,4 +30,9 @@
     <string name="_101_300">101–300$</string>
     <string name="_501_1000">501–1000$</string>
     <string name="_1001">Более чем 1001$</string>
+    <string name="before_inexpensive">Сначала недорогие</string>
+    <string name="before_expensive">Сначала дорогие</string>
+    <string name="best_rating">Сначала с лучшей оценкой</string>
+    <string name="by_discount">По скидке</string>
+    <string name="by_reviews">По количеству отзывов</string>
 </resources>

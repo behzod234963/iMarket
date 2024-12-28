@@ -134,7 +134,7 @@ fun SearchFieldScreen(
                     viewModel.onLocalDataEvent(LocalDataEvent.GetAllSearchedHistory)
                     LazyColumn {
                         items(
-                            items = searchHistory.value,
+                            items = searchHistory.value.distinctBy { it.title },
                             key = { it.toString() }) { history ->
                             SearchHistoryItem(
                                 historyModel = history

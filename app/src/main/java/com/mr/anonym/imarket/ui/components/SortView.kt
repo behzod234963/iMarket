@@ -2,6 +2,7 @@ package com.mr.anonym.imarket.ui.components
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -38,8 +39,8 @@ fun SortView(
             onExpandedChange(it)
         },
         modifier = Modifier
-            .width(150.dp)
-            .height(50.dp)
+            .width(200.dp)
+            .fillMaxHeight()
     ) {
         OutlinedTextField(
             value =value,

@@ -9,6 +9,8 @@ class GetProductsByCategory(private val repository: ProductsRepository) {
 
     fun execute(
         category: String,
+        limit: Int,
+        skip:Int,
         sortType: SortType = SortType.Inexpensive
-    ): Call<ProductsModel> = repository.getProductsByCategory(category)
+    ): Call<ProductsModel> = repository.getProductsByCategory(category,limit,skip)
 }

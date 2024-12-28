@@ -21,5 +21,9 @@ interface ProductsApi {
     fun getAllCategory():Call<List<CategoryModel>>
 
     @GET("/products/category/{category}")
-    fun getProductsByCategory(@Path("category")category:String):Call<ProductsModel>
+    fun getProductsByCategory(
+        @Path("category") category:String,
+        @Query("limit") limit:Int,
+        @Query("skip") skip:Int
+    ):Call<ProductsModel>
 }

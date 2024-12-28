@@ -1,5 +1,6 @@
 package com.mr.anonym.imarket.presentation.navigation
 
+import FilterView
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavType
@@ -7,7 +8,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.mr.anonym.imarket.ui.components.FilterView
 import com.mr.anonym.imarket.ui.screens.CategoryScreen
 import com.mr.anonym.imarket.ui.screens.ChangeCityScreen
 import com.mr.anonym.imarket.ui.screens.MainScreen
@@ -63,9 +63,19 @@ fun NavGraph() {
             val id = entry.arguments?.getInt("id")?:-1
             ProductScreen(arguments = NavigationArguments(id = id))
         }
-        composable(Screens.FilterView.route) {
+        composable(
+            Screens.FilterView.route + "/{categorySecond}",
+            arguments = listOf(
+                navArgument(name = "categorySecond"){
+                    type = NavType.StringType
+                    defaultValue = ""
+                }
+            )
+        ) {entry->
+            val categorySecond = entry.arguments?.getString("categorySecond")?:""
             FilterView (
-                ,
+                navController = navController,
+                argument = NavigationArguments(category = categorySecond),
                 onBackClick = {}
             )
         }

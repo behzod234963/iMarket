@@ -71,6 +71,10 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+//    Google truth for testing (test utils)
+    testImplementation(libs.googleTruthTest)
+    androidTestImplementation(libs.googleTruthTest)
+
 //    Modules
     implementation(project(":data"))
     implementation(project(":domain"))

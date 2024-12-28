@@ -43,6 +43,14 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+//    Google truth for testing (test utils)
+    testImplementation(libs.googleTruthTest)
+    androidTestImplementation(libs.googleTruthTest)
+
+//    Arch core testing
+    testImplementation(libs.archCoreTesting)
+    androidTestImplementation(libs.archCoreTesting)
+
 //    Module
     implementation(project(":domain"))
 

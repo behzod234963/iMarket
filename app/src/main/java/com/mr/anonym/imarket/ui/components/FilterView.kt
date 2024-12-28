@@ -1,6 +1,5 @@
-package com.mr.anonym.imarket.ui.components
-
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -8,6 +7,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -43,19 +43,25 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.text.isDigitsOnly
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import com.mr.anonym.domain.components.SortType
+import com.mr.anonym.domain.model.ProductsEntity
 import com.mr.anonym.imarket.R
-import com.mr.anonym.imarket.presentation.navigation.Screens
+import com.mr.anonym.imarket.presentation.navigation.NavigationArguments
 import com.mr.anonym.imarket.presentation.utils.event.FilterTypeEvent
+import com.mr.anonym.imarket.presentation.utils.event.LocalDataEvent
 import com.mr.anonym.imarket.presentation.viewModel.CategoryViewModel
+import com.mr.anonym.imarket.ui.components.DefaultCheckbox
+import com.mr.anonym.imarket.ui.components.DefaultOutlinedTextFiled
 import com.mr.anonym.imarket.ui.items.FilterViewBrandItem
 import com.mr.anonym.imarket.ui.theme.darkerGray
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @SuppressLint("MutableCollectionMutableState")
@@ -63,15 +69,18 @@ import kotlinx.coroutines.launch
 @Composable
 fun FilterView(
     navController: NavHostController,
+    argument: NavigationArguments,
     onBackClick: () -> Unit,
     viewModel: CategoryViewModel = hiltViewModel()
 ) {
 
     val products = viewModel.products
     val brands = ArrayList<String>()
+    val category = viewModel.categorySecond
+    val localProductEntity = viewModel.localProductEntity
 
     val isAvailableClicked = remember { mutableStateOf(false) }
-    val isRatingClicked = remember { mutableStateOf(true) }
+    val isRatingClicked = remember { mutableStateOf(false) }
     val isReviewClicked = remember { mutableStateOf(false) }
     val isPriceClicked = remember { mutableStateOf(false) }
     val isBrandClicked = remember { mutableStateOf(false) }
@@ -87,8 +96,6 @@ fun FilterView(
     val isThreeHundredChecked = remember { mutableStateOf(false) }
     val isFiveHundredChecked = remember { mutableStateOf(false) }
     val isMoreThanChecked = remember { mutableStateOf(false) }
-
-    val isBrandChecked = remember { mutableStateOf( false ) }
 
     val keyboardController = LocalSoftwareKeyboardController.current
 
@@ -262,10 +269,14 @@ fun FilterView(
                     .fillMaxWidth()
                     .fillMaxHeight()
                     .background(extractPrimaryMainColor())
-                    .padding(10.dp)
             ) {
                 if (isAvailableClicked.value) {
-                    Column {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(extractMainColor())
+                            .padding(10.dp)
+                    ) {
                         Text(
                             text = stringResource(R.string.available),
                             color = if (extractPrimaryMainColor() == Color.Black) Color.White else Color.Black,
@@ -286,9 +297,9 @@ fun FilterView(
                                 if (isInStockChecked.value) {
                                     isLowStockChecked.value = false
                                     isOutOfStockChecked.value = false
-                                    isStateChanged.value = true
+                                    if(!isStateChanged.value) isStateChanged.value = true else isStateChanged.value = true
                                 } else {
-                                    isStateChanged.value = false
+                                    if(!isStateChanged.value) isStateChanged.value = true else isStateChanged.value = true
                                 }
                                 viewModel.onProductsEvent(
                                     FilterTypeEvent.IsAvailable(
@@ -326,9 +337,9 @@ fun FilterView(
                                 if (isOutOfStockChecked.value) {
                                     isInStockChecked.value = false
                                     isLowStockChecked.value = false
-                                    isStateChanged.value = true
+                                    if(!isStateChanged.value) isStateChanged.value = true else isStateChanged.value = true
                                 } else {
-                                    isStateChanged.value = false
+                                    if(!isStateChanged.value) isStateChanged.value = true else isStateChanged.value = true
                                 }
                                 viewModel.onProductsEvent(
                                     FilterTypeEvent.IsAvailable(
@@ -366,9 +377,9 @@ fun FilterView(
                                 if (isLowStockChecked.value) {
                                     isInStockChecked.value = false
                                     isOutOfStockChecked.value = false
-                                    isStateChanged.value = true
+                                    if(!isStateChanged.value) isStateChanged.value = true else isStateChanged.value = true
                                 } else {
-                                    isStateChanged.value = false
+                                    if(!isStateChanged.value) isStateChanged.value = true else isStateChanged.value = true
                                 }
                                 viewModel.onProductsEvent(
                                     FilterTypeEvent.IsAvailable(
@@ -394,7 +405,12 @@ fun FilterView(
                     }
                 }
                 if (isRatingClicked.value) {
-                    Column {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(extractMainColor())
+                            .padding(10.dp)
+                    ) {
                         Text(
                             text = stringResource(R.string.rating),
                             color = if (extractPrimaryMainColor() == Color.Black) Color.White else Color.Black,
@@ -417,7 +433,8 @@ fun FilterView(
                                         isRatingChecked.value
                                     )
                                 )
-                                isStateChanged.value = isRatingChecked.value
+                                if(isRatingChecked.value) isStateChanged.value = true else isStateChanged.value = false
+                                if(!isStateChanged.value) isStateChanged.value = true else isStateChanged.value = true
                             }
                             Row(
                                 modifier = Modifier
@@ -435,7 +452,12 @@ fun FilterView(
                     }
                 }
                 if (isReviewClicked.value) {
-                    Column {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(extractMainColor())
+                            .padding(10.dp)
+                    ) {
                         Text(
                             text = stringResource(R.string.is_have_reviews),
                             color = if (extractPrimaryMainColor() == Color.Black) Color.White else Color.Black,
@@ -458,6 +480,9 @@ fun FilterView(
                                         isReviewsChecked.value
                                     )
                                 )
+                                if (isReviewsChecked.value) isStateChanged.value =
+                                    true else isStateChanged.value = false
+                                if(!isStateChanged.value) isStateChanged.value = true else isStateChanged.value = true
                             }
                             Row(
                                 modifier = Modifier
@@ -475,16 +500,27 @@ fun FilterView(
                     }
                 }
                 if (isPriceClicked.value) {
-                    Column {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(extractMainColor())
+                    ) {
 //                         Price
                         Text(
+                            modifier = Modifier
+                                .padding(5.dp),
                             text = stringResource(R.string.price),
                             color = if (extractPrimaryMainColor() == Color.Black) Color.White else Color.Black,
                             fontSize = 22.sp
                         )
                         PriceFields(
                             priceFrom = priceFrom.value,
-                            onPriceFromValueChange = { priceFrom.value = it },
+                            onPriceFromValueChange = {
+                                priceFrom.value = it
+                                if (priceFrom.value.isNotEmpty()) isStateChanged.value =
+                                    true else isStateChanged.value = false
+                                if(!isStateChanged.value) isStateChanged.value = true else isStateChanged.value = true
+                            },
                             onPriceFromSend = {
                                 priceFrom.value.forEach {
                                     if (it.code in 48..57) {
@@ -493,7 +529,7 @@ fun FilterView(
                                                 priceFrom = it.toDouble()
                                             )
                                         )
-                                    }else{
+                                    } else {
                                         viewModel.onProductsEvent(
                                             FilterTypeEvent.IsPriceEvent(
                                                 priceFrom = 0.0
@@ -504,12 +540,21 @@ fun FilterView(
                                 keyboardController?.hide()
                             },
                             priceTo = priceTo.value,
-                            onPriceToValueChange = { priceTo.value = it },
+                            onPriceToValueChange = {
+                                priceTo.value = it
+                                if (priceFrom.value.isNotEmpty()) isStateChanged.value =
+                                    true else isStateChanged.value = false
+                                if(!isStateChanged.value) isStateChanged.value = true else isStateChanged.value = true
+                            },
                             onPriceToSend = {
                                 priceTo.value.forEach {
-                                    if (it.code in 48..57){
-                                        viewModel.onProductsEvent(FilterTypeEvent.IsPriceEvent(priceTo = it.toDouble()))
-                                    }else{
+                                    if (it.code in 48..57) {
+                                        viewModel.onProductsEvent(
+                                            FilterTypeEvent.IsPriceEvent(
+                                                priceTo = it.toDouble()
+                                            )
+                                        )
+                                    } else {
                                         viewModel.onProductsEvent(
                                             FilterTypeEvent.IsPriceEvent(
                                                 priceFrom = 0.0
@@ -520,6 +565,7 @@ fun FilterView(
                                 keyboardController?.hide()
                             }
                         )
+                        Spacer(Modifier.height(20.dp))
 //                        Less than 100$
                         Row(
                             modifier = Modifier
@@ -539,9 +585,11 @@ fun FilterView(
                                     isMoreThanChecked.value = false
                                     priceFrom.value = "0"
                                     priceTo.value = "100"
+                                    if(!isStateChanged.value) isStateChanged.value = true else isStateChanged.value = true
                                 } else {
                                     priceFrom.value = ""
                                     priceTo.value = ""
+                                    if(!isStateChanged.value) isStateChanged.value = true else isStateChanged.value = true
                                 }
                                 if (priceFrom.value.isDigitsOnly() &&
                                     priceTo.value.isDigitsOnly()
@@ -586,9 +634,11 @@ fun FilterView(
                                     isMoreThanChecked.value = false
                                     priceFrom.value = "101"
                                     priceTo.value = "300"
+                                    if(!isStateChanged.value) isStateChanged.value = true else isStateChanged.value = true
                                 } else {
                                     priceFrom.value = ""
                                     priceTo.value = ""
+                                    if(!isStateChanged.value) isStateChanged.value = true else isStateChanged.value = true
                                 }
                                 if (priceFrom.value.isDigitsOnly() &&
                                     priceTo.value.isDigitsOnly()
@@ -633,9 +683,11 @@ fun FilterView(
                                     isMoreThanChecked.value = false
                                     priceFrom.value = "301"
                                     priceTo.value = "500"
+                                    if(!isStateChanged.value) isStateChanged.value = true else isStateChanged.value = true
                                 } else {
                                     priceFrom.value = ""
                                     priceTo.value = ""
+                                    if(!isStateChanged.value) isStateChanged.value = true else isStateChanged.value = true
                                 }
                                 if (priceFrom.value.isDigitsOnly() &&
                                     priceTo.value.isDigitsOnly()
@@ -680,9 +732,11 @@ fun FilterView(
                                     isMoreThanChecked.value = false
                                     priceFrom.value = "501"
                                     priceTo.value = "1000"
+                                    if(!isStateChanged.value) isStateChanged.value = true else isStateChanged.value = true
                                 } else {
                                     priceFrom.value = ""
                                     priceTo.value = ""
+                                    if(!isStateChanged.value) isStateChanged.value = true else isStateChanged.value = true
                                 }
                                 if (priceFrom.value.isDigitsOnly() &&
                                     priceTo.value.isDigitsOnly()
@@ -727,9 +781,11 @@ fun FilterView(
                                     isFiveHundredChecked.value = false
                                     priceFrom.value = "1001"
                                     priceTo.value = "37 000"
+                                    if(!isStateChanged.value) isStateChanged.value = true else isStateChanged.value = true
                                 } else {
                                     priceFrom.value = ""
                                     priceTo.value = ""
+                                    if(!isStateChanged.value) isStateChanged.value = true else isStateChanged.value = true
                                 }
                                 if (priceFrom.value.isDigitsOnly() &&
                                     priceTo.value.isDigitsOnly()
@@ -758,25 +814,69 @@ fun FilterView(
                     }
                 }
                 if (isBrandClicked.value) {
-                    Column {
+                    viewModel.getProductsByCategory(category = category.value, SortType.Inexpensive)
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(extractMainColor())
+                            .padding(10.dp)
+                    ) {
                         Text(
-                            text = stringResource(R.string.is_have_reviews),
+                            text = stringResource(R.string.brand),
                             color = if (extractPrimaryMainColor() == Color.Black) Color.White else Color.Black,
                             fontSize = 22.sp
                         )
                         LazyColumn {
-                            items(products.value){productsItem ->
+                            items(
+                                products.value.distinctBy { it.brand },
+                                key = { it.toString() }) { productsItem ->
+                                val isChecked = remember { mutableStateOf(false) }
                                 FilterViewBrandItem(
-                                    model = productsItem,
                                     color = extractPrimaryMainColor(),
-                                    isChecked = isBrandChecked.value,
-                                    onValueChange = {
-                                        isBrandChecked.value
-                                        if (isBrandChecked.value){
-                                            productsItem.brand?.let { it1 -> brands.add(it1) }
-                                            viewModel.onProductsEvent(FilterTypeEvent.BrandsEvent(brands))
+                                    content = {
+                                        DefaultCheckbox(
+                                            isChecked = isChecked.value,
+                                            onCheckedChange = {
+                                                isChecked.value = it
+                                                if (isChecked.value) isStateChanged.value = true else isStateChanged.value = false
+                                                if(!isStateChanged.value) isStateChanged.value = true else isStateChanged.value = true
+                                                try {
+                                                    CoroutineScope(Dispatchers.IO).launch {
+                                                        viewModel.localDataEvent(
+                                                            LocalDataEvent.InsertProduct(
+                                                                ProductsEntity(
+                                                                    id = productsItem.id,
+                                                                    brand = productsItem.brand!!,
+                                                                    isChecked = isChecked.value
+                                                                )
+                                                            )
+                                                        )
+                                                    }
+                                                    if (localProductEntity.value.isChecked) {
+                                                        brands.add(productsItem.brand!!)
+                                                    }
+                                                } catch (nullException: NullPointerException) {
+                                                    Log.d(
+                                                        "LocalDataLogging",
+                                                        "FilterView: ${nullException.message}"
+                                                    )
+                                                }
+                                            }
+                                        )
+                                        Spacer(Modifier.width(5.dp))
+                                        productsItem.brand?.let {
+                                            Text(
+                                                modifier = Modifier
+                                                    .clickable {
+                                                        isChecked.value = !isChecked.value
+                                                    },
+                                                text = it,
+                                                color = if (extractPrimaryMainColor() == Color.Black) Color.White else Color.Black,
+                                                fontSize = 16.sp
+                                            )
                                         }
-                                    }
+                                    },
+                                    model = productsItem
                                 )
                             }
                         }
@@ -854,109 +954,123 @@ fun PriceFields(
 
     val keyBoardController = LocalSoftwareKeyboardController.current
     val keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
-    Row(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
-            .height(60.dp),
-        verticalAlignment = Alignment.Top,
-        horizontalArrangement = Arrangement.SpaceBetween
+            .height(130.dp)
+            .padding(10.dp),
     ) {
 //        Text field price from
-        DefaultOutlinedTextFiled(
-            value = priceFrom,
-            onValueChange = {
-                if (priceFrom.isDigitsOnly()) {
-                    onPriceFromValueChange(it)
-                } else {
-                    coroutineScope.launch {
-                        snackbarState.snackbarHostState.showSnackbar(
-                            message = context.getString(R.string.the_price_field_must_not_have_any_letters)
-                        )
-                    }
-                }
-            },
-            keyboardOptions = keyboardOptions,
-            keyboardActions = {
-                onPriceFromSend()
-                keyBoardController?.hide()
-            },
-            singleLine = true,
-            colors = OutlinedTextFieldDefaults.colors(
-                disabledContainerColor = Color.White,
-                unfocusedContainerColor = Color.White,
-                focusedContainerColor = Color.White,
-                disabledBorderColor = Color.White,
-                focusedBorderColor = Color.White,
-                unfocusedBorderColor = Color.White,
-                unfocusedTextColor = Color.Black,
-                focusedTextColor = Color.Black
-            ),
+        Row(
             modifier = Modifier
-                .width(150.dp)
-                .fillMaxHeight(),
-            shape = RoundedCornerShape(10.dp),
-            textStyle = TextStyle(
-                color = Color.Black,
-                fontSize = 17.sp
-            ),
-            placeholder = {
-                Text(
-                    text = stringResource(R.string.from),
-                    color = Color.LightGray,
-                    fontSize = 16.sp
-                )
-            },
-            trailingIcon = {},
-            leadingIcon = {}
-        )
+                .fillMaxWidth()
+                .height(50.dp)
+        ) {
+            DefaultOutlinedTextFiled(
+                value = priceFrom,
+                onValueChange = {
+                    if (priceFrom.isDigitsOnly()) {
+                        onPriceFromValueChange(it)
+                    } else {
+                        coroutineScope.launch {
+                            snackbarState.snackbarHostState.showSnackbar(
+                                message = context.getString(R.string.the_price_field_must_not_have_any_letters)
+                            )
+                        }
+                    }
+                },
+                keyboardOptions = keyboardOptions,
+                keyboardActions = {
+                    onPriceFromSend()
+                    keyBoardController?.hide()
+                },
+                singleLine = true,
+                colors = OutlinedTextFieldDefaults.colors(
+                    disabledContainerColor = Color.LightGray,
+                    unfocusedContainerColor = Color.LightGray,
+                    focusedContainerColor = Color.LightGray,
+                    disabledBorderColor = Color.LightGray,
+                    focusedBorderColor = Color.LightGray,
+                    unfocusedBorderColor = Color.LightGray,
+                    unfocusedTextColor = Color.Black,
+                    focusedTextColor = Color.Black
+                ),
+                modifier = Modifier
+                    .fillMaxHeight(),
+                shape = RoundedCornerShape(10.dp),
+                textStyle = TextStyle(
+                    color = Color.Black,
+                    fontSize = 16.sp,
+                    textAlign = TextAlign.Start
+                ),
+                placeholder = {
+                    Text(
+                        text = stringResource(R.string.from),
+                        color = Color.Black,
+                        fontSize = 16.sp,
+                        textAlign = TextAlign.Start
+                    )
+                },
+                trailingIcon = {},
+                leadingIcon = {}
+            )
+        }
+        Spacer(Modifier.height(5.dp))
 //        Text field price to
-        DefaultOutlinedTextFiled(
-            value = priceTo,
-            onValueChange = {
-                if (priceTo.isDigitsOnly()) {
-                    onPriceToValueChange(it)
-                } else {
-                    coroutineScope.launch {
-                        snackbarState.snackbarHostState.showSnackbar(
-                            message = context.getString(R.string.the_price_field_must_not_have_any_letters)
-                        )
-                    }
-                }
-            },
-            keyboardOptions = keyboardOptions,
-            keyboardActions = {
-                onPriceToSend()
-                keyBoardController?.hide()
-            },
-            singleLine = true,
-            colors = OutlinedTextFieldDefaults.colors(
-                disabledContainerColor = Color.White,
-                unfocusedContainerColor = Color.White,
-                focusedContainerColor = Color.White,
-                disabledBorderColor = Color.White,
-                focusedBorderColor = Color.White,
-                unfocusedBorderColor = Color.White,
-                unfocusedTextColor = Color.Black,
-                focusedTextColor = Color.Black
-            ),
+        Row(
             modifier = Modifier
-                .width(150.dp)
-                .fillMaxHeight(),
-            shape = RoundedCornerShape(10.dp),
-            textStyle = TextStyle(
-                color = Color.Black,
-                fontSize = 17.sp
-            ),
-            placeholder = {
-                Text(
-                    text = stringResource(R.string.to),
-                    color = Color.LightGray,
-                    fontSize = 16.sp
-                )
-            },
-            trailingIcon = {},
-            leadingIcon = {}
-        )
+                .fillMaxWidth()
+                .height(50.dp)
+        ) {
+            DefaultOutlinedTextFiled(
+                value = priceTo,
+                onValueChange = {
+                    if (priceTo.isDigitsOnly()) {
+                        onPriceToValueChange(it)
+                    } else {
+                        coroutineScope.launch {
+                            snackbarState.snackbarHostState.showSnackbar(
+                                message = context.getString(R.string.the_price_field_must_not_have_any_letters)
+                            )
+                        }
+                    }
+                },
+                keyboardOptions = keyboardOptions,
+                keyboardActions = {
+                    onPriceToSend()
+                    keyBoardController?.hide()
+                },
+                singleLine = true,
+                colors = OutlinedTextFieldDefaults.colors(
+                    disabledContainerColor = Color.LightGray,
+                    unfocusedContainerColor = Color.LightGray,
+                    focusedContainerColor = Color.LightGray,
+                    disabledBorderColor = Color.LightGray,
+                    focusedBorderColor = Color.LightGray,
+                    unfocusedBorderColor = Color.LightGray,
+                    unfocusedTextColor = Color.Black,
+                    focusedTextColor = Color.Black
+                ),
+                modifier = Modifier
+                    .fillMaxHeight(),
+                shape = RoundedCornerShape(10.dp),
+                textStyle = TextStyle(
+                    color = Color.Black,
+                    fontSize = 16.sp,
+                    textAlign = TextAlign.Start
+                ),
+                placeholder = {
+                    Text(
+                        text = stringResource(R.string.to),
+                        color = Color.Black,
+                        fontSize = 16.sp,
+                        textAlign = TextAlign.Start
+                    )
+                },
+                trailingIcon = {},
+                leadingIcon = {}
+            )
+        }
     }
 }
 

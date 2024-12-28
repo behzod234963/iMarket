@@ -7,7 +7,7 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.9.3"
-composeBom = "2024.04.01"
+composeBom = "2024.12.01"
 appcompat = "1.7.0"
 material = "1.12.0"
 
@@ -19,14 +19,16 @@ okHttp = "4.12.0"
 lifecycle = "2.8.7"
 coroutine = "1.9.0"
 room = "2.6.1"
-paging3 = "3.3.4"
-cameraX = "1.5.0-alpha03"
+paging3 = "3.3.5"
+cameraX = "1.5.0-alpha04"
 googleMaps = "6.2.1"
-navigationCompose = "2.8.4"
+navigationCompose = "2.8.5"
 lottieAnimations = "6.6.0"
 playServicesLocation = "21.3.0"
 datastoreCoreAndroid = "1.1.1"
 roomArch = "1.1.1"
+googleTruth = "1.4.4"
+archCoreTesting = "2.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -89,6 +91,10 @@ lottieAnimtations = { group = "com.airbnb.android" , name = "lottie-compose" , v
 play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
 
 androidx-dataStore = { group = "androidx.datastore" , name  = "datastore-preferences" , version.ref = "datastoreCoreAndroid" }
+
+googleTruthTest = { group = "com.google.truth" , name = "truth" , version.ref = "googleTruth" }
+
+archCoreTesting = { group = "androidx.arch.core" , name = "core-testing" , version.ref = "archCoreTesting" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

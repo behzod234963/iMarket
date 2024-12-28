@@ -18,7 +18,6 @@ fun DefaultCheckbox(
             .size(50.dp),
         checked = isChecked,
         onCheckedChange = { onCheckedChange(it) },
-        enabled = true,
         colors = CheckboxDefaults.colors(
             checkedColor = Color.Red
         )

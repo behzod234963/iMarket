@@ -70,7 +70,7 @@ class SearchFieldViewModel @Inject constructor(
     }
 
     private fun getAllProducts() = viewModelScope.launch {
-        productsUseCases.getAllUseCase.execute().collect {}
+
     }
 
     //    method 2 using API
@@ -126,6 +126,8 @@ class SearchFieldViewModel @Inject constructor(
             is LocalDataEvent.ClearHistory -> {
                 localDataUseCases.clearHistoryUseCase.execute(event.history)
             }
+
+            is LocalDataEvent.InsertProduct -> TODO()
         }
     }
 }

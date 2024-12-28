@@ -10,5 +10,5 @@ data class ProductsState(
     val searchHistory:List<SearchHistoryModel> = emptyList(),
     val productsModel :ProductsItem? = null,
     val isLoading:Boolean = false,
-    val isStateChanged:Boolean = false
+    val isStateChanged:Boolean = false,
 )

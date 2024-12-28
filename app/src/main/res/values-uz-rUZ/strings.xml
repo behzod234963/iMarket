@@ -30,4 +30,9 @@
     <string name="_101_300">101–300$</string>
     <string name="_501_1000">501–1000$</string>
     <string name="_1001">1001$ dan ko\'p</string>
+    <string name="before_inexpensive">Narxi arzon</string>
+    <string name="before_expensive">Narxi qimmat</string>
+    <string name="best_rating">Yuqori reytingli</string>
+    <string name="by_discount">Chegirma bo\'yicha</string>
+    <string name="by_reviews">Sharhlar bo\'yicha</string>
 </resources>
